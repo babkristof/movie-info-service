@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: movie-info-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/movie_info?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: movie_user
+    password: movie_pass
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+server:
+  port: 8080
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+app:
+  cache:
+    ttl: 60m
+  external:
+    timeout: 3s
+    omdb:
+      base-url: http://www.omdbapi.com
+      api-key: ${OMDB_API_KEY}
+    tmdb:
+      base-url: https://api.themoviedb.org/3
+      api-key: ${TMDB_API_KEY}
+
+logging:
+  level:
+    com.assignment.informula.movieinfoservice: INFO
