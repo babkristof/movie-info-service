@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:mysql://mysql:3306/movie_info?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: movie_user
+    password: movie_pass
+  data:
+    redis:
+      host: redis
+      port: 6379

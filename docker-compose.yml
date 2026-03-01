@@ -29,5 +29,20 @@ services:
       timeout: 3s
       retries: 10
 
+  app:
+    build: .
+    container_name: movie-info-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      OMDB_API_KEY: ${OMDB_API_KEY}
+      TMDB_API_KEY: ${TMDB_API_KEY}
+
 volumes:
   mysql_data:
